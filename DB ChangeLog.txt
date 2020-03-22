@@ -1,0 +1,198 @@
+DB ChangeLog:
+
+CREATE TABLE `Progetto`.`Utente` (
+  `IDUtente` INT NOT NULL,
+  `Nome` VARCHAR(45) NULL,
+  `Cognome` VARCHAR(45) NULL,
+  `Email` VARCHAR(45) NOT NULL,
+  `Password` VARCHAR(45) NOT NULL);
+
+ALTER TABLE `Progetto`.`Utente` 
+ADD COLUMN `KSProvincia` VARCHAR(45) NOT NULL AFTER `Password`;
+
+ALTER TABLE `Progetto`.`Utente` 
+CHANGE COLUMN `KSProvincia` `KSProvincia` INT NOT NULL ;
+
+CREATE TABLE `Progetto`.`UtentiAmici` (
+  `IDAmicizia` INT NOT NULL AUTO_INCREMENT,
+  `KSUtente1` INT NOT NULL,
+  `KSUtente2` INT NOT NULL,
+  PRIMARY KEY (`IDAmicizia`));
+
+CREATE TABLE `Progetto`.`Partita` (
+  `IDPartita` INT NOT NULL AUTO_INCREMENT,
+  `Punteggio` INT NOT NULL,
+  PRIMARY KEY (`IDPartita`));
+
+CREATE TABLE `Progetto`.`Provincia` (
+  `IDProvincia` INT NOT NULL AUTO_INCREMENT,
+  `Nome` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`IDProvincia`));
+
+CREATE TABLE `Progetto`.`Regione` (
+  `IDRegione` INT NOT NULL AUTO_INCREMENT,
+  `Nome` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`IDRegione`));
+
+CREATE TABLE `Progetto`.`Nazione` (
+  `IDNazione` INT NOT NULL AUTO_INCREMENT,
+  `Nome` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`IDNazione`));
+
+CREATE TABLE `Progetto`.`Continente` (
+  `IDContinente` INT NOT NULL AUTO_INCREMENT,
+  `Nome` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`IDContinente`));
+
+ALTER TABLE `Progetto`.`Provincia` 
+ADD COLUMN `KSRegione` INT NOT NULL AFTER `Nome`;
+
+ALTER TABLE `Progetto`.`Regione` 
+ADD COLUMN `KSNazione` INT NOT NULL AFTER `Nome`;
+
+ALTER TABLE `Progetto`.`Nazione` 
+ADD COLUMN `KSContinente` INT NOT NULL AFTER `Nome`;
+
+Insert Into Continente Values
+(1, 'Europa');
+
+
+
+Insert Into Nazione Values
+(1, 'Italia', 1);
+
+Insert Into Regione Value   (1, 'Valle Aosta', 1),         (2, 'Piemonte', 1),         (3, 'Lombardia', 1),         (4, 'Liguria', 1),         (5, 'Emilia Romagna', 1),         (6, 'Veneto', 1),         (7, 'Friuli Venezia Giulia', 1),         (8, 'Marche', 1),         (9, 'Toscana', 1),         (10, 'Lazio', 1),         (11, 'Campania', 1),         (12, 'Molise', 1),         (13, 'Puglia', 1),         (14, 'Calabria', 1),         (15, 'Sicilia', 1),         (16, 'Sardegna', 1),         (17, 'Abruzzo', 1),         (18, 'Trentino Alto Adige', 1),         (19, 'Basilicata', 1),         (20, 'Umbria', 1);
+
+Insert Into Provincia Values
+	(1, 'Agrigento', 15),
+	(2, 'Alessandria', 2),
+	(3, 'Ancona', 8),
+	(4, 'Arezzo', 9),
+	(5, 'Ascoli Piceno', 8),
+	(6, 'Asti', 2),
+	(7, 'Avellino', 11),
+	(8, 'Bari', 13),
+	(9, 'Barletta-Andria-Trani', 13),
+	(10, 'Belluno', 6),
+	(11, 'Benevento', 11),
+	(12, 'Bergamo', 3),
+	(13, 'Biella', 2),
+	(14, 'Bologna', 5),
+	(15, 'Bolzano', 18),
+	(16, 'Brescia', 3),
+	(17, 'Brindisi', 13),
+	(18, 'Cagliari', 16),
+	(19, 'Caltanissetta', 15),
+	(20, 'Campobasso', 12),
+	(21, 'Carbonia-Iglesias', 16),
+	(22, 'Caserta', 11),
+	(23, 'Catania', 15),
+	(24, 'Catanzaro', 14),
+	(25, 'Chieti', 17),
+	(26, 'Como', 3),
+	(27, 'Cosenza', 14),
+	(28, 'Cremona', 3),
+	(29, 'Crotone', 14),
+	(30, 'Cuneo', 2),
+	(31, 'Enna', 15),
+	(32, 'Fermo',  8),
+	(33, 'Ferrara', 5),
+	(34, 'Firenze', 9),
+	(35, 'Foggia', 13),
+	(36, 'Forlì-Cesena', 5),
+	(37, 'Frosinone', 10),
+	(38, 'Genova', 4),
+	(39, 'Gorizia', 7),
+	(40, 'Grosseto', 9),
+	(41, 'Imperia', 4),
+	(42, 'Isernia', 12),
+	(43, 'L\'Aquila', 17),
+	(44, 'La Spezia', 4),
+	(45, 'Latina', 10),
+	(46, 'Lecce', 13),
+	(47, 'Lecco', 3),
+	(48, 'Livorno', 9),
+	(49, 'Lodi', 3),
+	(50, 'Lucca', 9),
+	(51, 'Macerata', 8),
+	(52, 'Mantova', 3),
+	(53, 'Massa e Carrara', 9),
+	(54, 'Matera', 19),
+	(55, 'Medio Campidano', 16),
+	(56, 'Messina', 15),
+	(57, 'Milano', 3),
+	(58, 'Modena', 5),
+	(59, 'Monza e Brianza', 3),
+	(60, 'Napoli', 11),
+	(61, 'Novara', 2),
+	(62, 'Nuoro', 16),
+	(63, 'Ogliastra', 16),
+	(64, 'Olbia-Tempio', 16),
+	(65, 'Oristano', 16),
+	(66, 'Padova', 6),
+	(67, 'Palermo', 15),
+	(68, 'Parma', 5),
+	(69, 'Pavia', 3),
+	(70, 'Perugia', 20),
+	(71, 'Pesaro e Urbino', 8),
+	(72, 'Pescara', 17),
+	(73, 'Piacenza', 5),
+	(74, 'Pisa', 9),
+	(75, 'Pistoia', 9),
+	(76, 'Pordenone', 7),
+	(77, 'Potenza', 19),
+	(78, 'Prato', 9),
+	(79, 'Ragusa', 15),
+	(80, 'Ravenna', 5),
+	(81, 'Reggio Calabria (Metropolitana)', 14),
+	(82, 'Reggio Emilia', 5),
+	(83, 'Rieti', 10),
+	(84, 'Rimini', 5),
+	(85, 'Roma', 10),
+	(86, 'Rovigo', 6),
+	(87, 'Salerno', 11),
+	(88, 'Sassari', 16),
+	(89, 'Savona', 4),
+	(90, 'Siena', 9),
+	(91, 'Siracusa', 15),
+	(92, 'Sondrio', 3),
+	(93, 'Taranto', 13),
+	(94, 'Teramo', 17),
+	(95, 'Terni', 20),
+	(96, 'Torino', 2),
+	(97, 'Trapani', 15),
+	(98, 'Trento', 18),
+	(99, 'Treviso', 6),
+	(100, 'Trieste', 7),
+	(101, 'Udine', 7),
+	(102, 'Aosta', 1),
+	(103, 'Varese', 3),
+	(104, 'Venezia', 6),
+	(105, 'Verbano-Cusio-Ossola', 2),
+	(106, 'Vercelli', 2),
+	(107, 'Verona', 6),
+	(108, 'Vibo Valentia', 14),
+	(109, 'Vicenza', 6),
+	(110, 'Viterbo', 10);
+
+ALTER TABLE `Progetto`.`Utente` 
+CHANGE COLUMN `IDUtente` `IDUtente` VARCHAR(45) NOT NULL ;
+
+ALTER TABLE `Progetto`.`Utente` 
+ADD PRIMARY KEY (`IDUtente`),
+ADD UNIQUE INDEX `Email_UNIQUE` (`Email` ASC),
+ADD UNIQUE INDEX `IDUtente_UNIQUE` (`IDUtente` ASC);
+
+ALTER TABLE `Progetto`.`Partita` 
+CHANGE COLUMN `Punteggio` `IDUtente` INT(11) NOT NULL ;
+
+ALTER TABLE `Progetto`.`Partita` 
+ADD COLUMN `Punteggio` INT(11) NULL AFTER `IDUtente`;
+
+ALTER TABLE `Progetto`.`Partita` 
+CHANGE COLUMN `IDUtente` `IDUtente` VARCHAR(45) NOT NULL ,
+CHANGE COLUMN `Punteggio` `Punteggio` INT(11) NULL ;
+
+ALTER TABLE `Progetto`.`UtentiAmici` 
+CHANGE COLUMN `KSUtente1` `KSUtente1` VARCHAR(45) NOT NULL ,
+CHANGE COLUMN `KSUtente2` `KSUtente2` VARCHAR(45) NOT NULL ;
